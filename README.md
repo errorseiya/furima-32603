@@ -50,7 +50,7 @@
 
 
 
-## addresss テーブル
+## addresses テーブル
 
 | Column         | Type       | Options           |
 | -------------- | ---------- | ----------------- |
