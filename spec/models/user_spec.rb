@@ -1,5 +1,4 @@
 require 'rails_helper'
-# 否定形にしてitの文を記述する
 RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
@@ -33,7 +32,6 @@ RSpec.describe User, type: :model do
         another_uer = FactoryBot.build(:user)
         another_uer.email = @user.email
         another_uer.valid?
-        # binding.pry
         expect(another_uer.errors.full_messages).to include("Email has already been taken", "Email has already been taken")
       end
       it "メールアドレスは、@を含む必要があること" do
@@ -109,7 +107,6 @@ RSpec.describe User, type: :model do
       it "first_name_kana（名前フリガナ）が空だと登録できない" do
         @user.first_name_kana = ""
         @user.valid?
-        # binding.pry
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
       it "first_name_kana（名前フリガナ）が全角（カタカナ）でないと登録できない" do
