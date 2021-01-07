@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
   end
@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    binding.pry
     if @item .save
       redirect_to root_path
     else
@@ -19,9 +20,9 @@ class ItemsController < ApplicationController
 
   private
 
-  def prototype_params  # プライベートメソッド
+  def item_params  # プライベートメソッド
     params.require(:item).permit(
-      :image, :name, :comment, :category_id, :condition_id, :shipping_charges_id, :prefecture_id, :days_to_ship_id, :price
+      :image, :name, :comment, :category_id, :condition_id, :shipping_charge_id, :prefecture_id, :days_to_ship_id, :price
     ).merge(user_id: current_user.id)
   end
 end
