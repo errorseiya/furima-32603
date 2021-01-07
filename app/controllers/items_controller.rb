@@ -6,11 +6,6 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
-    @category = Category.order("created_at DESC")
-    @condition = Caondition.order("created_at DESC")
-    @shipping_charges = Shipping_charges.order("created_at DESC")
-    @prefecture = Prefecture.order("created_at DESC")
-    @days_to_ship = Days_to_ship.order("created_at DESC")
   end
 
   def create
