@@ -5,6 +5,7 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
+  belongs_to :condition
 
 
   with_options presence: true do
@@ -15,6 +16,7 @@ class Item < ApplicationRecord
     
   with_options numericality: { other_than: 1 }  do
     validates :category_id, 
+    validates :condition_id, 
   end
     
 end
