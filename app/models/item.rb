@@ -10,6 +10,9 @@ class Item < ApplicationRecord
     validates :price
   end
 
+  validates :price, format: { with: /^[0-9]+$/, message: "Price Half-width number." } 
+  validates_exclusion_of :price, in: 300..9999999, message: "This site is only for under 300 and over 9999999"
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
