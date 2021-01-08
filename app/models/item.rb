@@ -8,11 +8,16 @@ class Item < ApplicationRecord
     validates :name 
     validates :comment
     validates :price
+
+    with_options numericality: { other_than: 0 } do
+      validates :category_id
+      validates :condition_id
+      validates :shipping_charge_id
+      validates :prefecture_id
+      validates :days_to_ship_id
+    end
   end
-  
-  # validates :price, numericality: { only_integer: true }
-  # validates_exclusion_of :price, in: 300..9999999, message: "This site is only for under 300 and over 9999999"
-  # validates_exclusion_of :age, in: 30..60, message: 'This site is only for under 30 and over 60'
+
   validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 9_999_999 }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -22,12 +27,5 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :days_to_ship
     
-  with_options numericality: { other_than: 0 } do
-    validates :category_id
-    validates :condition_id
-    validates :shipping_charge_id
-    validates :prefecture_id
-    validates :days_to_ship_id
-  end
     
 end
