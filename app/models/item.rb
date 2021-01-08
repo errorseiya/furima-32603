@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   # validates :price, numericality: { only_integer: true }
   # validates_exclusion_of :price, in: 300..9999999, message: "This site is only for under 300 and over 9999999"
   # validates_exclusion_of :age, in: 30..60, message: 'This site is only for under 30 and over 60'
-  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 }
+  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 9_999_999 }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
