@@ -4,8 +4,6 @@ const pay = () => {
   const form = document.getElementById("charge-form");
 
   form.addEventListener("submit", (e) => {
-
-    console.log("submit")
     
     e.preventDefault();
     
@@ -18,18 +16,15 @@ const pay = () => {
       exp_year: `20${formData.get("buyer_address[exp_year]")}`,
       cvc: formData.get("buyer_address[cvc]"),
     };
-    console.log("card")
 
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
         const token = response.id;
-        console.log("token")
         const renderDom = document.getElementById("charge-form");
         const tokenObj = `<input value=${token} name='token' type="hidden"> `;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
       
-
       document.getElementById("card-number").removeAttribute("name");
       document.getElementById("card-cvc").removeAttribute("name");
       document.getElementById("card-exp-month").removeAttribute("name");
