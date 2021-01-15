@@ -67,3 +67,8 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 
 gem 'active_hash'
+
+gem 'payjp'
+# payjp（Gem）
+# Ruby（Ruby on Rails）のサーバーサイドから、決済処理を行うときに必要となるGemです
+# これまでの実装で生成したトークンの情報などを用い、決済を行います
