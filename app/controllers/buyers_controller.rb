@@ -5,23 +5,10 @@ class BuyersController < ApplicationController
 
 
   def index
-    #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
-    # binding.pry
-    @item = Item.find(params[:item_id])
     @buyer_address = BuyerAddress.new 
-    # ⬆⬆
-    # @buyer_address = BuyerAddress.new 
-    # @item = Item.find(params[:item_id])
-    # 逆に︎なるとBuyerAddress.newが送られてきた
-    # params
-    # => <ActionController::Parameters
-    #  {"controller"=>"buyers", "action"=>"index", "item_id"=>"1"} permitted: false>を
-    #  消してしまい空nilになってしまう
-    # URLで送られてきたルーティング上の？の情報を先ず始めに受け取って定義するようにする！！
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @buyer_address = BuyerAddress.new(buyer_address_params)  
      if @buyer_address.valid?
        pay_item
@@ -31,6 +18,7 @@ class BuyersController < ApplicationController
        render action: :index
      end
   end
+  
 
 
   private
