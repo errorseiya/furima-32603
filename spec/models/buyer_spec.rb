@@ -113,6 +113,12 @@ RSpec.describe Buyer, type: :model do
         @buyer.valid?
         expect(@buyer.errors.full_messages).to include("Phone number is invalid. Include hyphen(-) or  please enter in half-width numbers")
       end       
+
+      it 'postal_codeは英数混合では保存できないこと' do
+        @buyer.phone_number = "090aaaabbbb"
+        @buyer.valid?
+        expect(@buyer.errors.full_messages).to include("Phone number is invalid. Include hyphen(-) or  please enter in half-width numbers")
+      end     
     end
   end
 end
